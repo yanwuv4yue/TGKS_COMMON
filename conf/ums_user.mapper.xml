@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.ums.user.dao.UserDao">
+    <resultMap id="UserEvtMap" type="UserEvt">
+        <id property="id" column="ID" />
+        <result property="username" column="USERNAME" />
+        <result property="password" column="PASSWORD" />
+        <result property="status" column="STATUS" />
+        <result property="type" column="TYPE" />
+        <result property="email" column="EMAIL" />
+        <result property="name" column="NAME" />
+        <result property="sex" column="SEX" />
+        <result property="groupId" column="GROUPID" />
+        <result property="createTime" column="CREATETIME" />
+    </resultMap>
+</mapper>

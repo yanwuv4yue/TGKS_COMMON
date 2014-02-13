@@ -1,0 +1,8 @@
+.paging-controls {text-align: center;}
+.paging-controls a {color: green;}
+.paging-controls a:visited {color: #0069D6;}
+.paging-controls .prev {float: left;}
+.paging-controls .prev:before {content: "<上一页";}
+.paging-controls .next {float: right;}
+.paging-controls .next:after {content: "下一页>";}
+.paging-controls .elide:before {content: " ... ";}

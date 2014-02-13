@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/jee 
+  http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<!-- dao 配置 -->
+	<bean id="ums_adminDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<!-- 这里是接口,不是接口实现类了 -->
+		<property name="mapperInterface" value="com.moemao.tgks.common.ums.admin.dao.AdminDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- service 配置 -->
+	<bean id="ums_adminService" class="com.moemao.tgks.common.ums.admin.service.impl.AdminServiceImpl">
+		<property name="ums_adminDao" ref="ums_adminDao" />
+	</bean>
+	
+	<!-- action 配置 -->
+	<bean id="ums_adminAction" class="com.moemao.tgks.common.ums.admin.action.AdminAction">
+		<property name="ums_adminService" ref="ums_adminService" />
+	</bean>
+
+	<!-- ﻿user_dao 配置 -->
+	<bean id="ums_userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.moemao.tgks.common.ums.user.dao.UserDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- ﻿user_service 配置 -->
+	<bean id="ums_userService"
+		class="com.moemao.tgks.common.ums.user.service.impl.UserServiceImpl">
+		<property name="ums_userDao" ref="ums_userDao" />
+	</bean>
+	<!-- ﻿user_action 配置 -->
+	<bean id="ums_userAction" class="com.moemao.tgks.common.ums.user.action.UserAction">
+		<property name="ums_userService" ref="ums_userService" />
+	</bean>
+	
+	<!-- ﻿usermenu_dao 配置 -->
+  <bean id="ums_userMenuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.moemao.tgks.common.ums.usermenu.dao.UserMenuDao" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+  <!-- ﻿usermenu_service 配置 -->
+  <bean id="ums_userMenuService" class="com.moemao.tgks.common.ums.usermenu.service.impl.UserMenuServiceImpl">
+    <property name="ums_userMenuDao" ref="ums_userMenuDao" />
+  </bean>
+  <!-- ﻿usermenu_action 配置 -->
+  <bean id="ums_userMenuAction" class="com.moemao.tgks.common.ums.usermenu.action.UserMenuAction">
+    <property name="ums_userMenuService" ref="ums_userMenuService" />
+  </bean>
+</beans>

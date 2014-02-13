@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.systemconfig.dao.SystemConfigDao">
+	<resultMap id="SystemConfigEvtMap" type="SystemConfigEvt">
+		<id property="id" column="ID" />
+		<result property="tag" column="TAG" />
+		<result property="name" column="NAME" />
+		<result property="value" column="VALUE" />
+		<result property="type" column="TYPE" />
+		<result property="module" column="MODULE" />
+		<result property="sort" column="SORT" />
+	</resultMap>
+</mapper> 

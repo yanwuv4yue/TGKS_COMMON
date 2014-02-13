@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC 
+"-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 别名 -->
+	<typeAliases>
+		<!-- common_frame -->
+	    <typeAlias alias="MenuEvt" type="com.moemao.tgks.common.frame.menu.entity.MenuEvt" />
+		<typeAlias alias="MenuReq" type="com.moemao.tgks.common.frame.menu.entity.MenuReq" />
+		
+		<!-- common_module -->
+	    <typeAlias alias="ModuleEvt" type="com.moemao.tgks.common.module.entity.ModuleEvt" />
+		<typeAlias alias="ModuleReq" type="com.moemao.tgks.common.module.entity.ModuleReq" />
+		
+		<!-- common_systemConfig -->
+	    <typeAlias alias="SystemConfigEvt" type="com.moemao.tgks.common.systemconfig.entity.SystemConfigEvt" />
+		<typeAlias alias="SystemConfigReq" type="com.moemao.tgks.common.systemconfig.entity.SystemConfigReq" />
+		
+		<!-- common_﻿systemlog -->
+		<typeAlias alias="SystemLogEvt" type="com.moemao.tgks.common.systemlog.entity.SystemLogEvt" />
+		<typeAlias alias="SystemLogReq" type="com.moemao.tgks.common.systemlog.entity.SystemLogReq" />
+		
+		<!-- ums -->
+		<typeAlias alias="AdminEvt" type="com.moemao.tgks.common.ums.admin.entity.AdminEvt" />
+		<typeAlias alias="AdminReq" type="com.moemao.tgks.common.ums.admin.entity.AdminReq" />
+		<typeAlias alias="UserEvt" type="com.moemao.tgks.common.ums.user.entity.UserEvt" />
+		<typeAlias alias="UserReq" type="com.moemao.tgks.common.ums.user.entity.UserReq" />
+		
+		<!-- ums_﻿usermenu -->
+		<typeAlias alias="UserMenuEvt" type="com.moemao.tgks.common.ums.usermenu.entity.UserMenuEvt" />
+		<typeAlias alias="UserMenuReq" type="com.moemao.tgks.common.ums.usermenu.entity.UserMenuReq" />
+	</typeAliases>
+</configuration>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.systemconfig.dao.SystemConfigDao">
+	<select id="common_querySystemConfigList" parameterType="SystemConfigReq" resultType="SystemConfigEvt" resultMap="SystemConfigEvtMap">
+			<![CDATA[  
+				SELECT t.id, t.tag, t.name, t.value, t.type, t.module, t.sort FROM t_tgks_common_systemconfig t
+			]]>
+			<where>
+					1=1
+				<if test="id !=null and id !='' ">
+					AND t.ID = #{id}
+				</if>
+				<if test="tag !=null and tag !='' ">
+					AND t.TAG LIKE CONCAT(CONCAT('%', #{tag}),'%')
+				</if>
+				<if test="name !=null and name !='' ">
+					AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
+				</if>
+				<if test="module !=null and module !='' ">
+					AND t.MODULE = #{module}
+				</if>
+			</where>
+			<![CDATA[  
+				ORDER BY t.MODULE, t.SORT
+			]]>
+	</select>
+	
+	<insert id="common_addSystemConfig" parameterType="SystemConfigEvt">
+			<![CDATA[  
+				INSERT INTO t_tgks_common_systemconfig (id, tag, name, value, type, module, sort) 
+				VALUES (#{id}, #{tag}, #{name}, #{value}, #{type}, #{module}, #{sort}) 
+			]]>
+	</insert>
+	
+	<update id="common_updateSystemConfig" parameterType="SystemConfigEvt">
+			<![CDATA[  
+				UPDATE t_tgks_common_systemconfig SET 
+						   tag = #{tag},
+						   name = #{name},
+						   value = #{value},
+						   type = #{type},
+						   module = #{module},
+						   sort = #{sort}
+				 WHERE id = #{id}
+			]]>
+	</update>
+	
+	<delete id="common_deleteSystemConfig" parameterType="list">
+			<![CDATA[  
+				DELETE FROM t_tgks_common_systemconfig WHERE id IN
+			]]>
+			<foreach collection="list" item="ids"  open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</delete>
+</mapper>

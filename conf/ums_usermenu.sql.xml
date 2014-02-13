@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.ums.usermenu.dao.UserMenuDao">
+<select id="ums_queryUserMenu" parameterType="UserMenuReq" resultType="UserMenuEvt" resultMap="UserMenuEvtMap">
+        <![CDATA[  
+            SELECT t.userid, t.menuid FROM t_tgks_common_usermenu t
+        ]]>
+        <where>
+                1=1
+            <if test="userId !=null and userId !='' ">
+                AND t.USERID = #{userId}
+            </if>
+            <if test="menuId !=null and menuId !='' ">
+                AND t.MENUID = #{menuId}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="ums_addUserMenu" parameterType="UserMenuEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_common_usermenu (userid, menuid) 
+            VALUES (#{userId}, #{menuId}) 
+        ]]>
+</insert>
+
+<update id="ums_updateUserMenu" parameterType="UserMenuEvt">
+        <![CDATA[  
+            UPDATE t_tgks_common_usermenu SET 
+                       menuid = #{menuId}
+             WHERE USERID = #{userId}
+        ]]>
+</update>
+
+<delete id="ums_deleteUserMenu" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_common_usermenu WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

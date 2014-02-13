@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.frame.menu.dao.MenuDao">
+	<select id="common_queryMenu" parameterType="MenuReq" resultType="MenuEvt" resultMap="MenuEvtMap">
+			<![CDATA[  
+				SELECT t.id, t.preid, t.name, t.status, t.url, t.level, t.sort, m.name preidname FROM t_tgks_common_menu t LEFT JOIN t_tgks_common_menu m ON t.preid = m.id 
+			]]>
+			<where>
+					1=1
+				<if test="id !=null and id !='' ">
+					AND t.ID = #{id}
+				</if>
+				<if test="preId !=null and preId !='' ">
+					AND t.PREID = #{preId}
+				</if>
+				<if test="name !=null and name !='' ">
+					AND t.NAME LIKE CONCAT(CONCAT('%', #{name}),'%')
+				</if>
+				<if test="status !=null and status !='' ">
+					AND t.STATUS = #{status}
+				</if>
+				<if test="level !=null and level !='' ">
+					AND t.LEVEL = #{level}
+				</if>
+			</where>
+			<if test="sortSql !=null and sortSql !='' ">
+				ORDER BY ${sortSql}
+			</if>
+	</select>
+	
+	<insert id="common_addMenu" parameterType="MenuEvt">
+			<![CDATA[  
+				INSERT INTO t_tgks_common_menu (id, preid, name, status, url, level, sort) 
+				VALUES (#{id}, #{preId}, #{name}, #{status}, #{url}, #{level}, #{sort}) 
+			]]>
+	</insert>
+	
+	<update id="common_updateMenu" parameterType="MenuEvt">
+			<![CDATA[  
+				UPDATE t_tgks_common_menu SET 
+						   preid = #{preId},
+						   name = #{name},
+						   status = #{status},
+						   url = #{url},
+						   level = #{level},
+						   sort = #{sort}
+				 WHERE ID = #{id}
+			]]>
+	</update>
+	
+	<delete id="common_deleteMenu" parameterType="list">
+			<![CDATA[  
+				DELETE FROM t_tgks_common_menu WHERE id IN
+			]]>
+			<foreach collection="list" item="ids"  open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</delete>
+	
+	<!-- 启用菜单 -->
+	<update id="common_onMenu" parameterType="list">
+			<![CDATA[  
+				UPDATE t_tgks_common_menu SET 
+						   status = '1'
+				 WHERE id IN
+			]]>
+			<foreach collection="list" item="ids"  open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</update>
+	
+	<!-- 停用菜单 -->
+	<update id="common_offMenu" parameterType="list">
+			<![CDATA[  
+				UPDATE t_tgks_common_menu SET 
+						   status = '0'
+				 WHERE id IN
+			]]>
+			<foreach collection="list" item="ids"  open="(" separator="," close=")">
+				#{ids}
+			</foreach>
+	</update>
+</mapper>

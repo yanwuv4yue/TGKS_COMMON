@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<icon>  
+        <!--small-icon元素应指向web站台中某个小图标的路径,大小为16 X 16 pixel,但是图象文件必须为GIF或JPEG格式,扩展名必须为:.gif或.jpg. -->  
+        <small-icon>resources/images/icon/icon_16X16.jpg</small-icon>  
+        <!--large-icon元素应指向web站台中某个大图表路径,大小为32 X 32 pixel,但是图象文件必须为GIF或JPEG的格式,扩展名必须为; gif或jpg.-->  
+        <large-icon>resources/images/icon/icon_32X32.jpg</large-icon>  
+    </icon>
+    
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 
+	<error-page>  
+        <error-code>403</error-code>  
+        <location>/WEB-INF/jsp/common/error/error_403.html</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/WEB-INF/jsp/common/error/error_404.html</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/WEB-INF/jsp/common/error/error_500.html</location>  
+    </error-page>
+     -->
+	<!-- Spring ApplicationContext配置文件的路径,可使用通配符，多个路径用","号分隔 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:*spring.xml</param-value>
+	</context-param>
+	
+	<!--Spring ApplicationContext 载入 -->
+	<!-- 用于初始化Spring容器的Listener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- Log4j listener -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!-- 编码过滤器 -->
+	<filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>com.moemao.tgks.common.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <!-- 登录状态检查过滤器 -->
+	<filter>
+        <filter-name>CheckLoginFilter</filter-name>
+        <filter-class>com.moemao.tgks.common.filter.CheckLoginFilter</filter-class>
+        <init-param>
+            <param-name>checkSessionKey</param-name>
+            <param-value>user_info</param-value>
+        </init-param>
+        <init-param>
+            <param-name>redirectURL</param-name>
+            <param-value>/index.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>notCheckURLList</param-name>
+            <param-value>/common/login.action</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CheckLoginFilter</filter-name>
+        <url-pattern>*.action</url-pattern>
+    </filter-mapping>
+    
+    <!-- 配置struts2过滤器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- session超时定义,单位为分钟 -->
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	
+	<!-- COMMON公共组件初始化 -->
+	<listener>
+		<listener-class>com.moemao.tgks.common.init.TGKSCommonInit</listener-class>
+	</listener>
+	
+</web-app>

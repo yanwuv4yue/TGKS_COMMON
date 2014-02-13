@@ -1,0 +1,28 @@
+1、子页面中调用jQuery方法后，主框架中原有的可用方法失效
+	不能再多层页面结构中重复加载头文件TGKSHeader.inc.jsp，内页JSP文件去掉头文件引用即可
+	
+2、开发过程中，如果没有修改页面而发生菜单css样式无法生效的情况，可能是由于菜单记录查询顺序发生了问题，严格遵守一级菜单在前的排序
+
+3、Table 'db_tgks_wl.t_tgks_wms_ï»¿commodity' doesn't exist 如果遇到发现操作数据表示有乱码现象，则可能是由于自动生成代码时造成的，删除乱码地方即可（SQL文件中基本上t_tgks_xxx_与后面的表名中间都会有）
+
+4、每个JSP页面中（包括子页面）必须已<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>开头
+
+5、如果action中无法获取页面绑定了的对象，先看对象名称是否一致，再看getset方法是否正确，最后不行就在action定义对象时new一个出来
+
+6、如果出现JSP页面表单属性传到后台出现乱码，可以修改tomcat的conf下server.xml文件，在端口那边加上URIEncoding="UTF-8"这个属性
+     <Connector port="8080" maxHttpHeaderSize="8192"
+               maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+               enableLookups="false" redirectPort="8443" acceptCount="100"
+               connectionTimeout="20000" disableUploadTimeout="true" URIEncoding="UTF-8"/>
+
+7、spring注入管理的service一律通过spring配置实现，如果在容器外临时需要调用到注入的service参照下面代码配置
+	1）实现ApplicationContextAware接口并实现setApplicationContext方法：
+		public class SystemLogServiceImpl implements SystemLogService, ApplicationContextAware
+			@Override
+		    public void setApplicationContext(ApplicationContext applicationContext)
+		            throws BeansException
+		    {
+				ContextUtil.setApplicationContext(applicationContext);
+		    }
+	2）在需要调用的地方使用ContextUtil.getBean方法，参数为spring中配置的beanID，手动类型转换
+		systemLogService = (SystemLogService) ContextUtil.getBean("common_systemLogService");

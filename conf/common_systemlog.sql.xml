@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.systemlog.dao.SystemLogDao">
+<select id="common_querySystemLog" parameterType="SystemLogReq" resultType="SystemLogEvt" resultMap="SystemLogEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.uid, t.username, t.type, t.action, t.result, t.info, t.createtime FROM t_tgks_common_systemlog t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="uid !=null and uid !='' ">
+                AND t.UID = #{uid}
+            </if>
+            <if test="username !=null and username !='' ">
+                AND t.NAME LIKE CONCAT(CONCAT('%', #{username}),'%')
+            </if>
+            <if test="type !=null and type !='' ">
+                AND t.TYPE = #{type}
+            </if>
+            <if test="action !=null and action !='' ">
+                AND t.ACTION = #{action}
+            </if>
+            <if test="result !=null and result !='' ">
+                AND t.RESULT = #{result}
+            </if>
+            <if test="createTimeStart !=null and createTimeStart !='' ">
+                AND t.CREATETIME >= #{createTimeStart}
+            </if>
+            <if test="createTimeEnd !=null and createTimeEnd !='' ">
+                AND #{createTimeEnd} >= t.CREATETIME
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="common_addSystemLog" parameterType="SystemLogEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_common_systemlog (id, uid, username, type, action, result, info, createtime) 
+            VALUES (#{id}, #{uid}, #{username}, #{type}, #{action}, #{result}, #{info}, #{createTime}) 
+        ]]>
+</insert>
+
+<update id="common_updateSystemLog" parameterType="SystemLogEvt">
+        <![CDATA[  
+            UPDATE t_tgks_common_systemlog SET 
+                       uid = #{uid},
+                       username = #{username},
+                       type = #{type},
+                       action = #{action},
+                       result = #{result},
+                       info = #{info},
+                       createtime = #{createTime}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="common_deleteSystemLog" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_common_systemlog WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

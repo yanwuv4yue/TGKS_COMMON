@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package namespace="/ums" name="style" extends="struts-default">
+
+	<!-- ums_user -->
+	<action name="userManager" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="userManager">
+		<result name="success">/WEB-INF/jsp/common/ums/user/userManager.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+
+	<action name="queryUser" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="queryUser">
+		<result name="success">/WEB-INF/jsp/common/ums/user/userList.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+
+	<action name="editUserPage" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="editUserPage">
+		<result name="success">/WEB-INF/jsp/common/ums/user/userEdit.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+
+	<action name="editUser" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="editUser">
+		<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+
+	<action name="deleteUser" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="deleteUser">
+		<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+	
+	<action name="changeStatusUser" class="com.moemao.tgks.common.ums.user.action.UserAction"
+		method="changeStatusUser">
+		<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+		<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	</action>
+	
+	<!-- ums_usermenu -->
+    <action name="editUserMenuPage" class="com.moemao.tgks.common.ums.usermenu.action.UserMenuAction" method="editUserMenuPage">
+        <result name="success">/WEB-INF/jsp/common/ums/usermenu/usermenuEdit.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+
+    <action name="editUserMenu" class="com.moemao.tgks.common.ums.usermenu.action.UserMenuAction" method="editUserMenu">
+        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+    </action>
+	</package>
+</struts>

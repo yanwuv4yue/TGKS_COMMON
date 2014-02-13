@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.ums.user.dao.UserDao">
+	<select id="ums_queryUser" parameterType="UserReq" resultType="UserEvt" resultMap="UserEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.username, t.password, t.status, t.type, t.email, t.name, t.sex, t.groupid, t.createtime FROM t_tgks_common_user t
+        ]]>
+		<where>
+			1=1
+			<if test="id !=null and id !='' ">
+				AND t.ID LIKE CONCAT(CONCAT('%', #{id}),'%')
+			</if>
+			<if test="username !=null and username !='' ">
+				AND t.USERNAME LIKE CONCAT(CONCAT('%', #{username}),'%')
+			</if>
+			<if test="password !=null and password !='' ">
+				AND t.PASSWORD = #{password}
+			</if>
+			<if test="status !=null and status !='' ">
+				AND t.STATUS = #{status}
+			</if>
+			<if test="type !=null and type !='' ">
+				AND t.TYPE = #{type}
+			</if>
+			<if test="email !=null and email !='' ">
+				AND t.EMAIL = #{email}
+			</if>
+			<if test="name !=null and name !='' ">
+				AND t.NAME = #{name}
+			</if>
+			<if test="sex !=null and sex !='' ">
+				AND t.SEX = #{sex}
+			</if>
+			<if test="groupId !=null and groupId !='' ">
+				AND t.GROUPID = #{groupId}
+			</if>
+			<if test="createTime !=null and createTime !='' ">
+				AND t.CREATETIME = #{createTime}
+			</if>
+		</where>
+		<if test="sortSql !=null and sortSql !='' ">
+			ORDER BY ${sortSql}
+		</if>
+	</select>
+
+	<insert id="ums_addUser" parameterType="UserEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_common_user (id, username, password, status, type, email, name, sex, groupid, createtime) 
+            VALUES (#{id}, #{username}, #{password}, #{status}, #{type}, #{email}, #{name}, #{sex}, #{groupId}, #{createTime}) 
+        ]]>
+	</insert>
+
+	<update id="ums_updateUser" parameterType="UserEvt">
+        <![CDATA[  
+            UPDATE t_tgks_common_user SET 
+                       username = #{username},
+                       password = #{password},
+                       status = #{status},
+                       type = #{type},
+                       email = #{email},
+                       name = #{name},
+                       sex = #{sex},
+                       groupid = #{groupId},
+                       createtime = #{createTime}
+             WHERE ID = #{id}
+        ]]>
+	</update>
+
+	<delete id="ums_deleteUser" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_common_user WHERE id IN
+        ]]>
+		<foreach collection="list" item="ids" open="(" separator="," close=")">
+			#{ids}
+		</foreach>
+	</delete>
+
+	<!-- 启用用户 -->
+	<update id="ums_onUser" parameterType="list">
+			<![CDATA[  
+				UPDATE t_tgks_common_user SET 
+						   status = '1'
+				 WHERE id IN
+			]]>
+		<foreach collection="list" item="ids" open="(" separator="," close=")">
+			#{ids}
+		</foreach>
+	</update>
+
+	<!-- 停用用户 -->
+	<update id="ums_offUser" parameterType="list">
+			<![CDATA[  
+				UPDATE t_tgks_common_user SET 
+						   status = '0'
+				 WHERE id IN
+			]]>
+		<foreach collection="list" item="ids" open="(" separator="," close=")">
+			#{ids}
+		</foreach>
+	</update>
+</mapper>

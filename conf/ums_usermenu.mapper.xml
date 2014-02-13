@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.ums.usermenu.dao.UserMenuDao">
+    <resultMap id="UserMenuEvtMap" type="UserMenuEvt">
+        <result property="userId" column="USERID" />
+        <result property="menuId" column="MENUID" />
+    </resultMap>
+</mapper>

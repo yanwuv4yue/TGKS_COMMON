@@ -1,0 +1,52 @@
+==================建表规范==================
+命名相关：
+1、表名以”t_tgks_“开头
+2、表名均以小写字母命名
+
+字段类型相关：
+1、表ID类型：varchar(30)
+2、除非具有可加减的性质，其他一律不可使用数字类型
+3、日期存储使用date类型；创建时间使用  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
+
+==================数据查询==================
+tgks查询数据遵循以下规则：
+1、页面展示每页记录条数pageSize放在数据库系统参数中维护。
+
+==================页面规范==================
+1、由于系统后期数据量会非常大，所以排序分页使用在数据库中每次只取出pageSize大小的数据来，不在前台做JS排序
+2、jsp路径命名全为小写，且无符号连接单词，jsp文件首字符小写命名。
+3、每个页面的组建ID尽可能精确到页面名称级别，同时打开的页面中如果存在ID相同的组建可能会造成页面的崩溃以及功能的失效
+4、标签展示时间的格式为<s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/>
+
+==================servlet过滤器==================
+1、自定义过滤器写在com.moemao.tgks.common.filter包内，web.xml配置必须写在struts2自带过滤器之前才能生效
+2、具体代码可以参照CharacterEncodingFilter以及CheckLoginFilter来写
+
+==================Struts2拦截器==================
+1、在com.moemao.tgks.common.interceptor包内新增拦截器实现类，继承AbstractInterceptor类
+	例如：public class UserInfoInterceptor extends AbstractInterceptor implements ApplicationContextAware
+	在intercept方法中写入拦截器需要实现的内容
+	public String intercept(ActionInvocation invocation) throws Exception
+	{
+		ActionContext ctx = invocation.getInvocationContext();
+		Map<String, Object> session = ctx.getSession();
+		
+		System.out.println("Action："+invocation.getAction().getClass().getName());
+	
+2、struts.xml中配置拦截器
+	<struts>
+		<package namespace="/common" name="common" extends="struts-default">
+			<!-- 拦截器配置 -->
+			<interceptors>
+				<!-- 后台登陆验证拦截 -->
+			   <interceptor name="userInfoInterceptor" class="com.moemao.tgks.common.interceptor.UserInfoInterceptor">
+			   </interceptor>
+			   
+			   <!-- 默认拦截器 -->
+				<interceptor-stack name="systemInterceptorStack">
+					<interceptor-ref name="userInfoInterceptor" />
+				</interceptor-stack>
+			</interceptors>
+	
+			<!-- 默认拦截器配置 覆盖struts2中的默认拦截器 -->
+			<default-interceptor-ref name="systemInterceptorStack"></default-interceptor-ref>

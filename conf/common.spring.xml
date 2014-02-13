@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+  http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/jee 
+  http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<!-- 系统登录 -->
+	<bean id="common_loginAction" class="com.moemao.tgks.common.frame.login.LoginAction">
+		<property name="common_menuService" ref="common_menuService" />
+		<property name="ums_userService" ref="ums_userService" />
+		<property name="ums_userMenuService" ref="ums_userMenuService" />
+	</bean>
+	
+	<!-- dao 配置 -->
+	<bean id="common_menuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<!-- 这里是接口,不是接口实现类了 -->
+		<property name="mapperInterface" value="com.moemao.tgks.common.frame.menu.dao.MenuDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- service 配置 -->
+	<bean id="common_menuService" class="com.moemao.tgks.common.frame.menu.service.impl.MenuServiceImpl">
+		<property name="common_menuDao" ref="common_menuDao" />
+	</bean>
+	<!-- action 配置 -->
+	<bean id="common_menuAction" class="com.moemao.tgks.common.frame.menu.action.MenuAction">
+		<property name="common_menuService" ref="common_menuService" />
+	</bean>
+	
+	<!-- module -->
+	<bean id="common_moduleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<!-- 这里是接口,不是接口实现类了 -->
+		<property name="mapperInterface" value="com.moemao.tgks.common.module.dao.ModuleDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="common_moduleService" class="com.moemao.tgks.common.module.service.impl.ModuleServiceImpl">
+		<property name="common_moduleDao" ref="common_moduleDao" />
+	</bean>
+	<bean id="common_moduleAction" class="com.moemao.tgks.common.module.action.ModuleAction">
+		<property name="common_moduleService" ref="common_moduleService" />
+	</bean>
+	
+	<!-- systemconfig -->
+	<bean id="common_systemConfigDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<!-- 这里是接口,不是接口实现类了 -->
+		<property name="mapperInterface" value="com.moemao.tgks.common.systemconfig.dao.SystemConfigDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="common_systemConfigService" class="com.moemao.tgks.common.systemconfig.service.impl.SystemConfigServiceImpl">
+		<property name="common_systemConfigDao" ref="common_systemConfigDao" />
+	</bean>
+	<bean id="common_systemConfigAction" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction">
+		<property name="common_systemConfigService" ref="common_systemConfigService" />
+	</bean>
+
+	<!-- ﻿systemlog_dao 配置 -->
+	<bean id="common_systemLogDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.moemao.tgks.common.systemlog.dao.SystemLogDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- ﻿systemlog_service 配置 -->
+	<bean id="common_systemLogService"
+		class="com.moemao.tgks.common.systemlog.service.impl.SystemLogServiceImpl">
+		<property name="common_systemLogDao" ref="common_systemLogDao" />
+	</bean>
+	<!-- ﻿systemlog_action 配置 -->
+	<bean id="common_systemLogAction" class="com.moemao.tgks.common.systemlog.action.SystemLogAction">
+		<property name="common_systemLogService" ref="common_systemLogService" />
+	</bean>
+</beans>

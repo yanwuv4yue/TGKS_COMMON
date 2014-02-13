@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package namespace="/common" name="common" extends="struts-default">
+		
+		<!-- login -->
+		<action name="loginPage" class="com.moemao.tgks.common.frame.login.LoginAction" method="loginPage">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="login" class="com.moemao.tgks.common.frame.login.LoginAction" method="login">
+			<result name="success">/WEB-INF/jsp/common/frame/frameAll.jsp</result>
+			<result name="error">/index.jsp</result>
+		</action>
+		
+		<!-- menu -->
+		<action name="menuManager" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="menuManager">
+			<result name="success">/WEB-INF/jsp/common/frame/menu/menuManager.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="queryMenu" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="queryMenu">
+			<result name="success">/WEB-INF/jsp/common/frame/menu/menuList.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="editMenuPage" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="editMenuPage">
+			<result name="success">/WEB-INF/jsp/common/frame/menu/menuEdit.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="editMenu" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="editMenu">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="deleteMenu" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="deleteMenu">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="changeStatusMenu" class="com.moemao.tgks.common.frame.menu.action.MenuAction" method="changeStatusMenu">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<!-- Module -->
+		<action name="queryModule" class="com.moemao.tgks.common.module.action.ModuleAction" method="queryModule">
+			<result name="success">/WEB-INF/jsp/common/module/moduleList.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<!-- systemConfig -->
+		<action name="systemConfigManager" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction" method="systemConfigManager">
+			<result name="success">/WEB-INF/jsp/common/systemconfig/systemConfigManager.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="querySystemConfig" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction" method="querySystemConfig">
+			<result name="success">/WEB-INF/jsp/common/systemconfig/systemConfigList.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="editSystemConfigPage" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction" method="editSystemConfigPage">
+			<result name="success">/WEB-INF/jsp/common/systemconfig/systemConfigEdit.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="editSystemConfig" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction" method="editSystemConfig">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="deleteSystemConfig" class="com.moemao.tgks.common.systemconfig.action.SystemConfigAction" method="deleteSystemConfig">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<!-- common_systemlog -->
+	    <action name="systemLogManager" class="com.moemao.tgks.common.systemlog.action.SystemLogAction" method="systemLogManager">
+	        <result name="success">/WEB-INF/jsp/common/systemlog/systemLogManager.jsp</result>
+	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	    </action>
+	
+	    <action name="querySystemLog" class="com.moemao.tgks.common.systemlog.action.SystemLogAction" method="querySystemLog">
+	        <result name="success">/WEB-INF/jsp/common/systemlog/systemLogList.jsp</result>
+	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	    </action>
+	
+	    <action name="editSystemLogPage" class="com.moemao.tgks.common.systemlog.action.SystemLogAction" method="editSystemLogPage">
+	        <result name="success">/WEB-INF/jsp/common/systemlog/systemLogEdit.jsp</result>
+	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	    </action>
+	
+	    <action name="editSystemLog" class="com.moemao.tgks.common.systemlog.action.SystemLogAction" method="editSystemLog">
+	        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	    </action>
+	
+	    <action name="deleteSystemLog" class="com.moemao.tgks.common.systemlog.action.SystemLogAction" method="deleteSystemLog">
+	        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
+	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
+	    </action>
+	</package>
+</struts>
