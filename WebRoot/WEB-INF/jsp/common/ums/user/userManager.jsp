@@ -6,7 +6,7 @@
 #userReq input{width:120px;}
 #userReq select{width:120px;}
 </style>
-
+<input type="hidden" id="userManagerSubmit" name="userManagerSubmit" value="0" />
 <div class="ui-widget">
 	<form id="userReq" action="../ums/queryUser.action" method="post">
 		<table>
@@ -73,6 +73,7 @@ $(document).ready(function(){
 			}, 
 			"关闭": function()
 			{
+				$("#userManagerSubmit").val("0");
 				$("#userEdit").dialog("close"); 
 			} 
 		}
@@ -81,6 +82,13 @@ $(document).ready(function(){
 	// 提交表单
 	$("#userForm").submit(function()
 	{
+		if ($("#userManagerSubmit").val() == "0")
+		{
+			return false;
+		}
+		
+		$("#userManagerSubmit").val("0");
+		
 		var options = { 
 			url:"../ums/editUser.action", // 提交给哪个执行
 			type:'POST', 
@@ -106,6 +114,7 @@ $(document).ready(function(){
 			primary: "ui-icon-plus"
 			}
 		}).click(function() {
+		$("#userManagerSubmit").val("1");
 		$( "#userEdit" ).dialog( "open" );
 		var edit=$.ajax({url:"../ums/editUserPage.action",async:false});
 		$("#userForm").html(edit.responseText);
@@ -118,6 +127,7 @@ $(document).ready(function(){
 			primary: "ui-icon-minus"
 			}
 		}).click(function() {
+		$("#userManagerSubmit").val("1");
 		// 获取选中的记录ids
 		var ids = "";
 		var array = document.getElementsByName("userId");
@@ -140,6 +150,7 @@ $(document).ready(function(){
 		if (ids == "")
 		{
 			alert("请选择至少一条记录");
+			$("#userManagerSubmit").val("0");
 			return false;
 		}
 		
@@ -183,6 +194,7 @@ $(document).ready(function(){
 			primary: "ui-icon-check"
 			}
 		}).click(function() {
+			$("#userManagerSubmit").val("1");
 			// 获取选中的记录ids
 			var ids = "";
 			var array = document.getElementsByName("userId");
@@ -205,6 +217,7 @@ $(document).ready(function(){
 			if (ids == "")
 			{
 				alert("请选择至少一条记录");
+				$("#userManagerSubmit").val("0");
 				return false;
 			}
 			
@@ -222,6 +235,7 @@ $(document).ready(function(){
 			};
 			
 			$("#userConfirm").ajaxSubmit(options);
+			$("#userManagerSubmit").val("0");
 			return false;
 	});
 	 
@@ -231,6 +245,7 @@ $(document).ready(function(){
 			primary: "ui-icon-close"
 			}
 		}).click(function() {
+			$("#userManagerSubmit").val("1");
 			// 获取选中的记录ids
 			var ids = "";
 			var array = document.getElementsByName("userId");
@@ -253,6 +268,7 @@ $(document).ready(function(){
 			if (ids == "")
 			{
 				alert("请选择至少一条记录");
+				$("#userManagerSubmit").val("0");
 				return false;
 			}
 			
@@ -270,6 +286,7 @@ $(document).ready(function(){
 			};
 			
 			$("#userConfirm").ajaxSubmit(options);
+			$("#userManagerSubmit").val("0");
 			return false;
 	});
 	

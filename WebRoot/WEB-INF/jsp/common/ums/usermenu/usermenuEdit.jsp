@@ -22,7 +22,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#userMenuTable').longtable({
-			'perPage' : 8
+			'perPage' : 10
 		});
 
 		// 点击记录首栏进入更新操作
