@@ -8,6 +8,20 @@
 2、除非具有可加减的性质，其他一律不可使用数字类型
 3、日期存储使用date类型；创建时间使用  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
 
+==================数据库参数=================
+1、常用的是在 parameterType 中填入 myBatis-config.xml 中配置好的Evt，或者也可以使用MAP<String, String>来带入参数
+	  <select id="selectTeacher" parameterType="Map" resultType="com.myapp.domain.Teacher">
+	  	select * from Teacher where c_id=#{id} and sex=#{sex}
+	  </select>
+	  
+	  java代码
+
+		Map<String,String> map=new HasMap<String,String>();
+		map.put("id","2");
+		map.put("sex","男");
+		List<Teacher> tList = teacherMapper.selectTeacher(map);  			  
+		
+
 ==================数据查询==================
 tgks查询数据遵循以下规则：
 1、页面展示每页记录条数pageSize放在数据库系统参数中维护。
