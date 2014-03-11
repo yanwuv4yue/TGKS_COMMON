@@ -136,7 +136,8 @@ $(document).ready(function(){
 		// 请求提交标志
 		$("#systemLogManagerSubmit").val("1");
 		$( "#systemLogEdit" ).dialog( "open" );
-		var edit=$.ajax({url:"../common/editSystemLogPage.action",async:false});
+		//var edit=$.ajax({url:"../common/editSystemLogPage.action",async:false});
+		var edit=$.ajax({url:"../common/uploadSinglePage.action",async:false});
 		$("#systemLogForm").html(edit.responseText);
 		return false;
 	});

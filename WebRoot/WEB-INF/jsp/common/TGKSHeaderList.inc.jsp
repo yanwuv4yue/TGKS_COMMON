@@ -11,5 +11,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="<%=basePath%>resources/css/common/form/tgks_pagination.css" />
 
 <script src="<%=basePath%>js/common/form/tgks_button.js"></script>
-
-

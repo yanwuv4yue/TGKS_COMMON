@@ -1,3 +1,9 @@
+TGKS v0.6.0	2014.3.11
+新增单文件上传功能，实现小文件存储功能，返回文件存放路径
+新增代码com.moemao.tgks.common.core.upload
+测试地址：../common/uploadSinglePage.action
+
+
 TGKS v0.5.0	2013.10.1
 新增servlet过滤器，增加登录验证以及编码设置过滤器
 新增struts2拦截器
