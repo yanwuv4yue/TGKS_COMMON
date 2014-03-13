@@ -1,30 +1,36 @@
-TGKS v0.6.0	2014.3.11
-新增单文件上传功能，实现小文件存储功能，返回文件存放路径
-新增代码com.moemao.tgks.common.core.upload
-测试地址：../common/uploadSinglePage.action
+TGKS_COMMON v0.6.1	2014.3.13
+1、修改系统操作记录部分，添加单条记录详细信息查询(不可编辑)
+2、添加账户管理、菜单管理功能操作日志
+3、系统日志记录功能，session用户空判断完善，登录失败时UID记为noUID，username记为noUsername
 
 
-TGKS v0.5.0	2013.10.1
-新增servlet过滤器，增加登录验证以及编码设置过滤器
-新增struts2拦截器
+TGKS_COMMON v0.6.0	2014.3.11
+1、新增单文件上传功能，实现小文件存储功能，返回文件存放路径
+2、新增代码com.moemao.tgks.common.core.upload
+3、测试地址：../common/uploadSinglePage.action
 
 
-TGKS v0.4.0	2013.4.10
-新增spring容器service调用
+TGKS_COMMON v0.5.0	2013.10.1
+1、新增servlet过滤器，增加登录验证以及编码设置过滤器
+2、新增struts2拦截器
 
 
-TGKS v0.3.0	2013.2.28
-新增模块管理功能
-新增系统参数配置选项
+TGKS_COMMON v0.4.0	2013.4.10
+1、新增spring容器service调用
 
 
-TGKS v0.2.0	2013.2.14
-新增系统用户模块，添加登录功能
-新增系统菜单模块，给系统用户配置不同的菜单权限，当前模式为全局模式Mode 1
-新增登录首页
+TGKS_COMMON v0.3.0	2013.2.28
+1、新增模块管理功能
+2、新增系统参数配置选项
 
 
-TGKS v0.1.0	2013.1.1
-主框架采用S2SM3搭建完成，完成基本配置文件分配规则
-对struts2配置文件解耦合完成，mybatis配置文件读取路径统一
-主界面UI设定完成
+TGKS_COMMON v0.2.0	2013.2.14
+1、新增系统用户模块，添加登录功能
+2、新增系统菜单模块，给系统用户配置不同的菜单权限，当前模式为全局模式Mode 1
+3、新增登录首页
+
+
+TGKS_COMMON v0.1.0	2013.1.1
+1、主框架采用S2SM3搭建完成，完成基本配置文件分配规则
+2、对struts2配置文件解耦合完成，mybatis配置文件读取路径统一
+3、主界面UI设定完成
