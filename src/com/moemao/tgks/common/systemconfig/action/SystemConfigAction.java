@@ -64,10 +64,12 @@ public class SystemConfigAction extends TGKSAction
         if (CommonUtil.isEmpty(systemConfigEvt.getId()))
         {
         	result = common_systemConfigService.addSystemConfig(systemConfigEvt);
+        	CommonUtil.systemLog("common/editSystemConfig.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增系统参数\n%S", systemConfigEvt.toString()));
         }
         else
         {
         	result = common_systemConfigService.updateSystemConfig(systemConfigEvt);
+        	CommonUtil.systemLog("common/editSystemConfig.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改系统参数\n%S", systemConfigEvt.toString()));
         }
         
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));        
@@ -82,6 +84,7 @@ public class SystemConfigAction extends TGKSAction
         
         String ids = this.getRequest().getParameter("ids");
         int result = common_systemConfigService.deleteSystemConfig(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("common/deleteSystemConfig.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除系统参数\nID:%S", ids));
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "SystemConfigAction.deleteSystemConfig");

@@ -19,9 +19,9 @@
 			<s:iterator  value="list" var="evt">
 				<tr>
 					<!-- <td width="20"><input type="checkbox" name="systemLogId" value="<s:property value='#evt.id'/>" /></td> -->
-					<td><s:property value='#evt.id'/></b></td>
+					<td><b id="<s:property value='#evt.id'/>" class="systemLogUpdate"><s:property value="#evt.id"/></b></td>
 					<td><s:property value="#evt.username"/></td>
-					<td><s:if test="#evt.type == 0">查询</s:if><s:elseif test="#evt.type == 1">新增</s:elseif><s:elseif test="#evt.type == 2">更新</s:elseif><s:elseif test="#evt.type == 3">删除</s:elseif></td>
+					<td><s:if test="#evt.type == 0">查询</s:if><s:elseif test="#evt.type == 1">新增</s:elseif><s:elseif test="#evt.type == 2">修改</s:elseif><s:elseif test="#evt.type == 3">删除</s:elseif></td>
 					<td><s:property value="#evt.action"/></td>
 					<td><s:if test="#evt.result == 0">成功</s:if><s:else>失败</s:else></td>
 					<td><s:property value="#evt.info"/></td>

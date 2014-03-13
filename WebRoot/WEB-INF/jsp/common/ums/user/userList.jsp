@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/jsp/common/TGKSHeaderList.inc.jsp" %>
+<input type="hidden" id="userListSubmit" name="userListSubmit" value="0" />
 <div id="userTableDiv" class="ui-widget">
     <table id="userTable" class="ui-widget ui-widget-content">
         <thead>
@@ -48,6 +49,7 @@ $(function() {
 	// 点击记录首栏进入更新操作
 	$(".userUpdate").click(function() {
 		$("#userEdit").dialog("open");
+		$("#userManagerSubmit").val("1");
 		var edit = $.ajax({
 			url : "../ums/editUserPage.action?id=" + this.id,
 			async : false

@@ -94,10 +94,12 @@ public class MenuAction extends TGKSAction
         if (CommonUtil.isEmpty(menuEvt.getId()))
         {
             result = common_menuService.addMenu(menuEvt);
+            CommonUtil.systemLog("common/editMenu.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增菜单\n%S", menuEvt.toString()));
         }
         else
         {
             result = common_menuService.updateMenu(menuEvt);
+            CommonUtil.systemLog("common/editMenu.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改菜单\n%S", menuEvt.toString()));
         }
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         
@@ -112,6 +114,8 @@ public class MenuAction extends TGKSAction
         
         String ids = this.getRequest().getParameter("ids");
         int result = common_menuService.deleteMenu(CommonUtil.stringToList(ids));
+        CommonUtil.systemLog("common/deleteMenu.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除菜单\nID:%S", ids));
+        
         CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
         
         CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "MenuAction.deleteMenu");

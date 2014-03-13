@@ -93,8 +93,17 @@ public class CommonUtil
     {
     	
     	SystemLogEvt systemLogEvt = new SystemLogEvt();
-    	systemLogEvt.setUid(getUserInfoBySession().getId());
-    	systemLogEvt.setUsername(getUserInfoBySession().getUsername());
+    	UserEvt userEvt = getUserInfoBySession();
+    	if (null != userEvt)
+    	{
+    		systemLogEvt.setUid(userEvt.getId());
+    		systemLogEvt.setUsername(userEvt.getUsername());
+    	}
+    	else
+    	{
+    		systemLogEvt.setUid("noUID");
+    		systemLogEvt.setUsername("noUsername");
+    	}
     	systemLogEvt.setAction(action);
     	systemLogEvt.setType(type);
     	systemLogEvt.setResult(result);

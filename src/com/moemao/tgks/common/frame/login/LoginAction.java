@@ -80,6 +80,7 @@ public class LoginAction extends TGKSAction
         if (CommonUtil.isEmpty(userReq.getUsername()) || CommonUtil.isEmpty(userReq.getPassword()))
         {
         	message = "密码错误";
+        	CommonUtil.systemLog("common/login.action", CommonConstant.SYSTEMLOG_TYPE_0, CommonConstant.FAILD, String.format("账号：%s 登录系统失败（密码错误）", userReq.getUsername()));
     		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_LOGIN_FAILD, String.format("账号：%s 密码：%s", userReq.getUsername(), userReq.getPassword()));
     		return ERROR;
         }
@@ -98,6 +99,7 @@ public class LoginAction extends TGKSAction
     	{
     		message = "密码错误";
     		
+    		CommonUtil.systemLog("common/login.action", CommonConstant.SYSTEMLOG_TYPE_0, CommonConstant.FAILD, String.format("账号：%s 登录系统失败（密码错误）", userReq.getUsername()));
     		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_LOGIN_FAILD, String.format("账号：%s 密码：%s", userReq.getUsername(), userReq.getPassword()));
     		return ERROR;
     	}

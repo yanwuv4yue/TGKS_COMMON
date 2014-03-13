@@ -54,6 +54,12 @@ public class UserEvt
 	 */
 	private Date createTime;
 	
+	@Override
+	public String toString()
+	{
+		return String.format("id:%S\nusername:%S\npassword:%S\nstatus:%S\ntype:%S\nemail:%S\nname:%S\nsex:%S\ngroupId:%S\ncreateTime:%S\n", id, username, password, status, type, email, name, sex, groupId, createTime);
+	}
+	
 	/**
 	 * @return 返回 id
 	 */

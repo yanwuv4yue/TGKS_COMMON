@@ -66,8 +66,7 @@ public class SystemLogAction extends TGKSAction
 	
 	public String editSystemLog()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "SystemLogAction.updateSystemLog");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "SystemLogAction.updateSystemLog");
 		int result = 0;
 		if (CommonUtil.isEmpty(systemLogEvt.getId()))
 		{
@@ -77,26 +76,18 @@ public class SystemLogAction extends TGKSAction
 		{
 			result = common_systemLogService.updateSystemLog(systemLogEvt);
 		}
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "SystemLogAction.updateSystemLog");
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "SystemLogAction.updateSystemLog");
 		return SUCCESS;
 	}
 	
 	public String deleteSystemLog()
 	{
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN,
-		        "SystemLogAction.deleteSystemLog");
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "SystemLogAction.deleteSystemLog");
 		String ids = this.getRequest().getParameter("ids");
-		int result = common_systemLogService.deleteSystemLog(CommonUtil
-		        .stringToList(ids));
-		CommonUtil.infoLog(logger,
-		        CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS,
-		        StringUtil.toBeString(result));
-		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT,
-		        "SystemLogAction.deleteSystemLog");
+		int result = common_systemLogService.deleteSystemLog(CommonUtil.stringToList(ids));
+		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
+		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "SystemLogAction.deleteSystemLog");
 		return SUCCESS;
 	}
 	

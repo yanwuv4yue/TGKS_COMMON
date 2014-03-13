@@ -41,6 +41,12 @@ public class MenuEvt
      * 上级菜单名称
      */
     private String preIdName;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\npreId:%S\nname:%S\nstatus:%S\nurl:%S\nlevel:%S\nsort:%S", id, preId, name, status, url, level, sort);
+    }
 
     public String getId()
     {

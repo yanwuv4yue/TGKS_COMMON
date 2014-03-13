@@ -71,10 +71,12 @@ public class UserAction extends TGKSAction
 		if (CommonUtil.isEmpty(userEvt.getId()))
 		{
 			result = ums_userService.addUser(userEvt);
+			CommonUtil.systemLog("ums/editUser.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增账户\n%S", userEvt.toString()));
 		}
 		else
 		{
 			result = ums_userService.updateUser(userEvt);
+			CommonUtil.systemLog("ums/editUser.action", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("修改账户\n%S", userEvt.toString()));
 		}
 		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "UserAction.updateUser");
@@ -86,6 +88,7 @@ public class UserAction extends TGKSAction
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, "UserAction.deleteUser");
 		String ids = this.getRequest().getParameter("ids");
 		int result = ums_userService.deleteUser(CommonUtil.stringToList(ids));
+		CommonUtil.systemLog("ums/editUser.action", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("删除账户\nID:%S", ids));
 		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "UserAction.deleteUser");
 		return SUCCESS;

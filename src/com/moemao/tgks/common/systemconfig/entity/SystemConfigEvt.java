@@ -22,6 +22,12 @@ public class SystemConfigEvt
     
     // 展示顺序
     private String sort;
+    
+    @Override
+    public String toString()
+    {
+    	return String.format("id:%S\ntag:%S\nname:%S\nvalue:%S\ntype:%S\nmodule:%S\nsort:%S\n", id, tag, name, value, type, module, sort);
+    }
 
     public String getId()
     {
