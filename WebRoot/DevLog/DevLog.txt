@@ -2,6 +2,7 @@ TGKS_COMMON v0.6.1	2014.3.13
 1、修改系统操作记录部分，添加单条记录详细信息查询(不可编辑)
 2、添加账户管理、菜单管理功能操作日志
 3、系统日志记录功能，session用户空判断完善，登录失败时UID记为noUID，username记为noUsername
+CommonUtil.systemLog("common/editMenu.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增菜单\n%S", menuEvt.toString()));
 
 
 TGKS_COMMON v0.6.0	2014.3.11
