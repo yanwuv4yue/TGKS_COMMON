@@ -21,6 +21,10 @@
 		<typeAlias alias="SystemLogEvt" type="com.moemao.tgks.common.systemlog.entity.SystemLogEvt" />
 		<typeAlias alias="SystemLogReq" type="com.moemao.tgks.common.systemlog.entity.SystemLogReq" />
 		
+		<!-- common_﻿note -->
+		<typeAlias alias="NoteEvt" type="com.moemao.tgks.common.frame.note.entity.NoteEvt" />
+		<typeAlias alias="NoteReq" type="com.moemao.tgks.common.frame.note.entity.NoteReq" />
+		
 		<!-- ums -->
 		<typeAlias alias="AdminEvt" type="com.moemao.tgks.common.ums.admin.entity.AdminEvt" />
 		<typeAlias alias="AdminReq" type="com.moemao.tgks.common.ums.admin.entity.AdminReq" />

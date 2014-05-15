@@ -103,3 +103,17 @@ CREATE TABLE IF NOT EXISTS `t_tgks_common_systemlog` (
   `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统操作日志表';
+
+
+--
+-- 表的结构 `t_tgks_common_note`
+--
+DROP TABLE IF EXISTS `t_tgks_common_note`;
+CREATE TABLE IF NOT EXISTS `t_tgks_common_note` (
+  `id` varchar(30) NOT NULL COMMENT '表唯一主键',
+  `uid` varchar(30) NOT NULL COMMENT '用户ID',
+  `content` varchar(500) default NULL COMMENT '记录内容',
+  `level` varchar(3) default NULL COMMENT '优先级',
+  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='记事本表';

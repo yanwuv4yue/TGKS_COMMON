@@ -113,5 +113,48 @@
 	        <result name="success">/WEB-INF/jsp/common/success.jsp</result>
 	        <result name="error">/WEB-INF/jsp/common/error.jsp</result>
 	    </action>
+	
+		<!-- common_note -->
+		<action name="noteManager"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="noteManager">
+			<result name="success">/WEB-INF/jsp/common/note/noteManager.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+	
+		<action name="queryNote"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="queryNote">
+			<result name="success">/WEB-INF/jsp/common/note/noteList.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+	
+		<action name="editNotePage"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="editNotePage">
+			<result name="success">/WEB-INF/jsp/common/note/noteEdit.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="getLatestNote"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="getLatestNote">
+			<result name="success">/WEB-INF/jsp/common/note/noteUpdate.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+		
+		<action name="saveLatestNote"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="saveLatestNote">
+			<result name="success">/WEB-INF/jsp/common/note/noteUpdate.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+	
+		<action name="editNote"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="editNote">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
+	
+		<action name="deleteNote"
+			class="com.moemao.tgks.common.frame.note.action.NoteAction" method="deleteNote">
+			<result name="success">/WEB-INF/jsp/common/success.jsp</result>
+			<result name="error">/WEB-INF/jsp/common/error.jsp</result>
+		</action>
 	</package>
 </struts>

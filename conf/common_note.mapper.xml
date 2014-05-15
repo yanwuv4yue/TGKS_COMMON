@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.frame.note.dao.NoteDao">
+    <resultMap id="NoteEvtMap" type="NoteEvt">
+        <id property="id" column="ID" />
+        <result property="uid" column="UID" />
+        <result property="content" column="CONTENT" />
+        <result property="level" column="LEVEL" />
+        <result property="createTime" column="CREATETIME" />
+    </resultMap>
+</mapper>

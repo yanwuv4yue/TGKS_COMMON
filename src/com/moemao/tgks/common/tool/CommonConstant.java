@@ -7,32 +7,6 @@ public class CommonConstant
      */
     public static final String MODULE_TAG = "common";
     
-    public static final String TGKS_VERSION = "tgks_version";
-    
-    public static final String USER_INFO = "user_info";
-    
-    public static final String LOGIN_PLEASE = "login_please";
-    
-    /**
-     * 日志类型 0 查询
-     */
-    public static final String SYSTEMLOG_TYPE_0 = "0";
-    
-    /**
-     * 日志类型 1 新增
-     */
-    public static final String SYSTEMLOG_TYPE_1 = "1";
-    
-    /**
-     * 日志类型 2 修改
-     */
-    public static final String SYSTEMLOG_TYPE_2 = "2";
-    
-    /**
-     * 日志类型 3 删除
-     */
-    public static final String SYSTEMLOG_TYPE_3 = "3";
-    
     /**
      * 成功
      */
@@ -43,6 +17,23 @@ public class CommonConstant
      */
     public static final String FAILD = "1";
     
+    /**
+     * session
+     */
+    public static final String USER_INFO = "user_info";
+    
+    public static final String LOGIN_PLEASE = "login_please";
+    
+    /**
+     * config.properties
+     */
+    public static final String TGKS_VERSION = "tgks_version";
+    
+    public static final String COMMON_NOTE_NUM = "common_note_num";
+    
+    /**
+     * language_zh_CN.properties
+     */
     public static final String SYSTEM_INFO_INIT_I18N_SUCCESS = "system_info_init_i18n_success";
     
     public static final String SYSTEM_INFO_INIT_I18N_FAILED = "system_info_init_i18n_failed";
@@ -68,4 +59,26 @@ public class CommonConstant
     public static final String SYSTEM_INFO_LOG_LOGIN_SUCCESS = "system_info_log_login_success";
     
     public static final String SYSTEM_INFO_LOG_LOGIN_FAILD = "system_info_log_login_faild";	
+    
+    
+    
+    /**
+     * 日志类型 0 查询
+     */
+    public static final String SYSTEMLOG_TYPE_0 = "0";
+    
+    /**
+     * 日志类型 1 新增
+     */
+    public static final String SYSTEMLOG_TYPE_1 = "1";
+    
+    /**
+     * 日志类型 2 修改
+     */
+    public static final String SYSTEMLOG_TYPE_2 = "2";
+    
+    /**
+     * 日志类型 3 删除
+     */
+    public static final String SYSTEMLOG_TYPE_3 = "3";
 }

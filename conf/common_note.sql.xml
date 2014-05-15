@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+  "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moemao.tgks.common.frame.note.dao.NoteDao">
+<select id="common_queryNote" parameterType="NoteReq" resultType="NoteEvt" resultMap="NoteEvtMap">
+        <![CDATA[  
+            SELECT t.id, t.uid, t.content, t.level, t.createtime FROM t_tgks_common_note t
+        ]]>
+        <where>
+                1=1
+            <if test="id !=null and id !='' ">
+                AND t.ID = #{id}
+            </if>
+            <if test="uid !=null and uid !='' ">
+                AND t.UID = #{uid}
+            </if>
+            <if test="content !=null and content !='' ">
+                AND t.CONTENT = #{content}
+            </if>
+            <if test="level !=null and level !='' ">
+                AND t.LEVEL = #{level}
+            </if>
+            <if test="createTime !=null and createTime !='' ">
+                AND t.CREATETIME = #{createTime}
+            </if>
+        </where>
+        <if test="sortSql !=null and sortSql !='' ">
+            ORDER BY ${sortSql}
+        </if>
+</select>
+
+<insert id="common_addNote" parameterType="NoteEvt">
+        <![CDATA[  
+            INSERT INTO t_tgks_common_note (id, uid, content, level, createtime) 
+            VALUES (#{id}, #{uid}, #{content}, #{level}, #{createTime}) 
+        ]]>
+</insert>
+
+<update id="common_updateNote" parameterType="NoteEvt">
+        <![CDATA[  
+            UPDATE t_tgks_common_note SET 
+                       uid = #{uid},
+                       content = #{content},
+                       level = #{level},
+                       createtime = #{createTime}
+             WHERE ID = #{id}
+        ]]>
+</update>
+
+<delete id="common_deleteNote" parameterType="list">
+        <![CDATA[  
+            DELETE FROM t_tgks_common_note WHERE id IN
+        ]]>
+        <foreach collection="list" item="ids"  open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+</delete>
+</mapper>

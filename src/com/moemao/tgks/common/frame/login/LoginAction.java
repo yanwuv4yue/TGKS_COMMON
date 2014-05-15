@@ -11,6 +11,9 @@ import com.moemao.tgks.common.core.action.TGKSAction;
 import com.moemao.tgks.common.frame.menu.entity.MenuEvt;
 import com.moemao.tgks.common.frame.menu.entity.MenuReq;
 import com.moemao.tgks.common.frame.menu.service.MenuService;
+import com.moemao.tgks.common.frame.note.entity.NoteEvt;
+import com.moemao.tgks.common.frame.note.entity.NoteReq;
+import com.moemao.tgks.common.frame.note.service.NoteService;
 import com.moemao.tgks.common.frame.tool.FrameConstant;
 import com.moemao.tgks.common.tool.CommonConstant;
 import com.moemao.tgks.common.tool.CommonUtil;
@@ -48,9 +51,16 @@ public class LoginAction extends TGKSAction
     private List<MenuEvt> menuList = new ArrayList<MenuEvt>();
     
     /**
+     * 记事本列表
+     */
+    private List<NoteEvt> noteList = new ArrayList<NoteEvt>();
+    
+    /**
      * 菜单Service
      */
     private MenuService common_menuService;
+    
+    private NoteService common_noteService;
     
     /**
      * 用户菜单权限
@@ -110,6 +120,11 @@ public class LoginAction extends TGKSAction
         CommonUtil.systemLog("common/login.action", CommonConstant.SYSTEMLOG_TYPE_0, CommonConstant.SUCCESS, String.format("账号：%s 登录系统成功", userReq.getUsername()));
 		CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_LOGIN_SUCCESS, String.format("账号：%s 密码：%s", userReq.getUsername(), userReq.getPassword()));
 		CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, "LoginAction.login");
+		
+		// 登录成功进入首页
+		
+		// 查询用户记事本记录
+		this.userNote();
         
         return SUCCESS;
     }
@@ -135,6 +150,15 @@ public class LoginAction extends TGKSAction
         		}
         	}
         }
+    }
+
+	private void userNote()
+    {
+    	// 查询最新的N条记事本记录 可以在config.properties中配置
+    	NoteReq noteReq = new NoteReq();
+    	noteReq.setUid(CommonUtil.getUserInfoBySession().getId());
+    	noteReq.setSortSql("t.ID DESC LIMIT 0 , " + CommonUtil.getConfig(CommonConstant.COMMON_NOTE_NUM));
+    	noteList = common_noteService.queryNote(noteReq);
     }
 
     public static Log getLogger()
@@ -221,4 +245,25 @@ public class LoginAction extends TGKSAction
     {
     	this.message = message;
     }
+    
+    public List<NoteEvt> getNoteList()
+    {
+    	return noteList;
+    }
+
+	public void setNoteList(List<NoteEvt> noteList)
+    {
+    	this.noteList = noteList;
+    }
+
+	public NoteService getCommon_noteService()
+    {
+    	return common_noteService;
+    }
+
+	public void setCommon_noteService(NoteService common_noteService)
+    {
+    	this.common_noteService = common_noteService;
+    }
+
 }

@@ -21,8 +21,9 @@ INSERT INTO `t_tgks_common_menu` (`id`, `preid`, `name`, `status`, `url`, `level
 ('COMM20121021021441000000', '0', '系统菜单', '1', '#', '1', '900'),
 ('COMM20121021021441000011', 'COMM20121021021441000000', '菜单管理', '1', '../common/menuManager.action', '2', '900'),
 ('COMM20121021021441000012', 'COMM20121021021441000000', '系统设置', '1', '../common/systemConfigManager.action', '2', '900'),
-('COMM20121021021441000010', 'COMM20121021021441000000', '账户管理', '1', '../ums/userManager.action', '2', '900'),
-('COMM20131021163642000000', 'COMM20121021021441000000', '操作日志', '1', '../common/systemLogManager.action', '2', '900');
+('COMM20121021021441000013', 'COMM20121021021441000000', '账户管理', '1', '../ums/userManager.action', '2', '900'),
+('COMM20121021021441000014', 'COMM20121021021441000000', '操作日志', '1', '../common/systemLogManager.action', '2', '900'),
+('COMM20121021021441000015', 'COMM20121021021441000000', '记事本管理', '1', '../common/noteManager.action', '2', '900');
 
 --
 -- 转存表中的数据 `t_tgks_common_user`

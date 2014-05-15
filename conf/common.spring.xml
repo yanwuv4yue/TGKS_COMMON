@@ -18,6 +18,7 @@
 	<!-- 系统登录 -->
 	<bean id="common_loginAction" class="com.moemao.tgks.common.frame.login.LoginAction">
 		<property name="common_menuService" ref="common_menuService" />
+		<property name="common_noteService" ref="common_noteService" />
 		<property name="ums_userService" ref="ums_userService" />
 		<property name="ums_userMenuService" ref="ums_userMenuService" />
 	</bean>
@@ -77,5 +78,21 @@
 	<!-- ﻿systemlog_action 配置 -->
 	<bean id="common_systemLogAction" class="com.moemao.tgks.common.systemlog.action.SystemLogAction">
 		<property name="common_systemLogService" ref="common_systemLogService" />
+	</bean>
+
+	<!-- ﻿note_dao 配置 -->
+	<bean id="common_noteDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.moemao.tgks.common.frame.note.dao.NoteDao" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- ﻿note_service 配置 -->
+	<bean id="common_noteService"
+		class="com.moemao.tgks.common.frame.note.service.impl.NoteServiceImpl">
+		<property name="common_noteDao" ref="common_noteDao" />
+	</bean>
+	<!-- ﻿note_action 配置 -->
+	<bean id="common_noteAction" class="com.moemao.tgks.common.frame.note.action.NoteAction">
+		<property name="common_noteService" ref="common_noteService" />
 	</bean>
 </beans>
