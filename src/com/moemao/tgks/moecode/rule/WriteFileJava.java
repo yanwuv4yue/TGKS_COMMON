@@ -410,7 +410,7 @@ public class WriteFileJava extends WriteFile
             write("{");
             write("CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, \"" + upper + "Action.update" + upper + "\");");
             write("int result = 0;");
-            write("if (CommonUtil.isEmpty(" + moduleEvt + ".get" + moduleId + "()))");
+            write("if (CommonUtil.isEmpty(" + moduleEvt + ".get" + Util.firstUpperCase(moduleId) + "()))");
             write("{");
             write("result = " +moduleService + ".add" + upper + "(" + moduleEvt + ");");
             write("}");

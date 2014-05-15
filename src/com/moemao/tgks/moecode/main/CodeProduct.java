@@ -71,12 +71,12 @@ public class CodeProduct
 
                     if (strs.length > 1)
                     {
-                        this.module.setPackagePach(strs[1]);
+                        this.module.setPackagePach(strs[1].trim());
                     }
                     
                     if (strs.length > 2)
                     {
-                        this.module.setModuleTag(strs[2]);
+                        this.module.setModuleTag(strs[2].trim());
                         
                         this.module.setModuleTableName("T_TGKS_" + strs[2].toUpperCase()
                                 + strs[0].toUpperCase());
