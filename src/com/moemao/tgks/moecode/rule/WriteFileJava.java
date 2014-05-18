@@ -66,13 +66,34 @@ public class WriteFileJava extends WriteFile
             write("public class " + module.getModuleName() + "Evt");
             write("{");
             
+            // field
             for (Field field : list)
             {
                 comment(field.getFieldComment());
                 write("private " + field.getFieldType() + " " + field.getFieldName() + ";");
                 newLine();
             }
-
+            
+            // @override toString()
+            write("@Override");
+        	write("public String toString()");
+        	write("{");
+        	write("return String.format(\"");
+            for (Field field : list)
+            {
+            	writeOn(field.getFieldName() + ":%S\\n");
+            }
+            writeOn("\"");
+            for (Field field : list)
+            {
+            	writeOn(", " + field.getFieldName());
+            }
+            writeOn(");");
+            write("}");
+            
+            newLine();
+            
+            // getter setter
             for (Field field : list)
             {
                 comment("@return 返回 " + field.getFieldName());
@@ -413,10 +434,12 @@ public class WriteFileJava extends WriteFile
             write("if (CommonUtil.isEmpty(" + moduleEvt + ".get" + Util.firstUpperCase(moduleId) + "()))");
             write("{");
             write("result = " +moduleService + ".add" + upper + "(" + moduleEvt + ");");
+            write("CommonUtil.systemLog(\"wms/edit" + upper + ".action\", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format(\"新增" + moduleEvt + "\\n%S\", " + moduleEvt + ".toString()));");
             write("}");
             write("else");
             write("{");
             write("result = " +moduleService + ".update" + upper + "(" + moduleEvt + ");");
+            write("CommonUtil.systemLog(\"wms/edit" + upper + ".action\", CommonConstant.SYSTEMLOG_TYPE_2, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format(\"修改" + moduleEvt + "\\n%S\", " + moduleEvt + ".toString()));");
             write("}");
             write("CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));");
             write("CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, \"" + upper + "Action.update" + upper + "\");");
@@ -429,6 +452,7 @@ public class WriteFileJava extends WriteFile
             write("CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_IN, \"" + upper + "Action.delete" + upper + "\");");
             write("String " + moduleIds + " = this.getRequest().getParameter(\"" + moduleIds + "\");");
             write("int result = " +moduleService + ".delete" + upper + "(CommonUtil.stringToList(" + moduleIds + "));");
+            write("CommonUtil.systemLog(\"wms/delete" + upper + ".action\", CommonConstant.SYSTEMLOG_TYPE_3, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format(\"删除" + moduleEvt + "\\nID:%S\", ids));");
             write("CommonUtil.infoLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_EXECUTE_NUMS, StringUtil.toBeString(result));");
             write("CommonUtil.debugLog(logger, CommonConstant.SYSTEM_INFO_LOG_METHOD_OUT, \"" + upper + "Action.delete" + upper + "\");");
             write("return SUCCESS;");
