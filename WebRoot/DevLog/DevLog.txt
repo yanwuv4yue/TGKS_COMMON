@@ -1,4 +1,4 @@
-TTGKS_COMMON v0.7.1	2014.5.18
+TGKS_COMMON v0.7.1	2014.5.18
 1、moecode添加TGKS日志代码自动生成，Evt加入toString自动生成
 
 TGKS_COMMON v0.7.0	2014.5.15
