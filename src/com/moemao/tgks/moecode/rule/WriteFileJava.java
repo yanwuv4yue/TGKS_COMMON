@@ -356,7 +356,7 @@ public class WriteFileJava extends WriteFile
             tempField = new Field();
             tempField.setFieldName(moduleReq);
             tempField.setFieldType(moduleReqType);
-            tempField.setFieldComment(module.getModuleName() + "查询条件封装对象");
+            tempField.setFieldComment(module.getModuleName() + "查询条件封装对象（自动生成代码后需要new对象）");
             list.add(tempField);
             
             /*
