@@ -1,3 +1,7 @@
+TGKS_COMMON v0.7.2	2014.8.26
+1、systemLog新增时会记录操作端的IP地址，相应修改systemLog相关代码表以及字段
+2、tgks_common.jar更新
+
 TGKS_COMMON v0.7.1	2014.5.18
 1、moecode添加TGKS日志代码自动生成，Evt加入toString自动生成
 

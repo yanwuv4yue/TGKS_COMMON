@@ -11,6 +11,7 @@
         <result property="action" column="ACTION" />
         <result property="result" column="RESULT" />
         <result property="info" column="INFO" />
+        <result property="ip" column="IP" />
         <result property="createTime" column="CREATETIME" />
     </resultMap>
 </mapper>

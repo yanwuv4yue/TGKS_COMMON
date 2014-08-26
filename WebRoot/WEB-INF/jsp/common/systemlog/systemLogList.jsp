@@ -12,6 +12,7 @@
 				<th>动作</th>
 				<th>结果</th>
 				<th>详细信息</th>
+				<th>IP</th>
 				<th>操作时间</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
 					<td><s:property value="#evt.action"/></td>
 					<td><s:if test="#evt.result == 0">成功</s:if><s:else>失败</s:else></td>
 					<td><s:property value="#evt.info"/></td>
+					<td><s:property value="#evt.ip"/></td>
 					<td><s:date name="#evt.createTime" format="yyyy-MM-dd HH:mm:ss"/></td>
 				</tr>
 			</s:iterator>

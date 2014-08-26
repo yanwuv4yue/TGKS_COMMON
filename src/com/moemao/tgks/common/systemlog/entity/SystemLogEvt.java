@@ -40,6 +40,11 @@ public class SystemLogEvt
 	private String info;
 	
 	/**
+	 * IP地址
+	 */
+	private String ip;
+	
+	/**
 	 * 创建时间
 	 */
 	private Date createTime;
@@ -148,6 +153,16 @@ public class SystemLogEvt
 	public void setInfo(String info)
     {
     	this.info = info;
+    }
+
+	public String getIp()
+    {
+    	return ip;
+    }
+
+	public void setIp(String ip)
+    {
+    	this.ip = ip;
     }
 
 	/**

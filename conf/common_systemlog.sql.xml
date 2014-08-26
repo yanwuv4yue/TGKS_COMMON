@@ -5,7 +5,7 @@
 <mapper namespace="com.moemao.tgks.common.systemlog.dao.SystemLogDao">
 <select id="common_querySystemLog" parameterType="SystemLogReq" resultType="SystemLogEvt" resultMap="SystemLogEvtMap">
         <![CDATA[  
-            SELECT t.id, t.uid, t.username, t.type, t.action, t.result, t.info, t.createtime FROM t_tgks_common_systemlog t
+            SELECT t.id, t.uid, t.username, t.type, t.action, t.result, t.info, t.ip, t.createtime FROM t_tgks_common_systemlog t
         ]]>
         <where>
                 1=1
@@ -27,6 +27,9 @@
             <if test="result !=null and result !='' ">
                 AND t.RESULT = #{result}
             </if>
+            <if test="ip !=null and ip !='' ">
+                AND t.IP LIKE CONCAT(CONCAT('%', #{ip}),'%')
+            </if>
             <if test="createTimeStart !=null and createTimeStart !='' ">
                 AND t.CREATETIME >= #{createTimeStart}
             </if>
@@ -41,8 +44,8 @@
 
 <insert id="common_addSystemLog" parameterType="SystemLogEvt">
         <![CDATA[  
-            INSERT INTO t_tgks_common_systemlog (id, uid, username, type, action, result, info, createtime) 
-            VALUES (#{id}, #{uid}, #{username}, #{type}, #{action}, #{result}, #{info}, #{createTime}) 
+            INSERT INTO t_tgks_common_systemlog (id, uid, username, type, action, result, info, ip, createtime) 
+            VALUES (#{id}, #{uid}, #{username}, #{type}, #{action}, #{result}, #{info}, #{ip}, #{createTime}) 
         ]]>
 </insert>
 
@@ -54,6 +57,7 @@
                        type = #{type},
                        action = #{action},
                        result = #{result},
+                       ip = #{ip},
                        info = #{info},
                        createtime = #{createTime}
              WHERE ID = #{id}

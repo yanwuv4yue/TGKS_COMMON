@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `t_tgks_common_systemlog` (
   `action` varchar(100) NOT NULL COMMENT '动作',
   `result` varchar(2) NOT NULL COMMENT '结果（0 成功；1 失败）',
   `info` varchar(500) COMMENT '详细信息',
+  `ip` varchar(30) COMMENT 'IP地址',
   `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='系统操作日志表';

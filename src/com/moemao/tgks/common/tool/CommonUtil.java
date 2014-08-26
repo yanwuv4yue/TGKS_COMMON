@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
+import org.apache.struts2.ServletActionContext;
 
 import com.moemao.tgks.common.core.spring.ContextUtil;
 import com.moemao.tgks.common.init.MessageManager;
@@ -108,6 +109,9 @@ public class CommonUtil
     	systemLogEvt.setType(type);
     	systemLogEvt.setResult(result);
     	systemLogEvt.setInfo(info);
+    	
+    	// 新增操作机器的IP保存 2014-08-26 add by Ken Buluba
+    	systemLogEvt.setIp(ServletActionContext.getRequest().getRemoteAddr());
     	
     	if (systemLogService == null)
     	{
