@@ -9,6 +9,7 @@ import com.moemao.tgks.common.core.action.TGKSAction;
 import com.moemao.tgks.common.tool.CommonConstant;
 import com.moemao.tgks.common.tool.CommonUtil;
 import com.moemao.tgks.common.tool.StringUtil;
+import com.moemao.tgks.common.ums.tool.UmsConstant;
 import com.moemao.tgks.common.ums.user.entity.UserEvt;
 import com.moemao.tgks.common.ums.user.entity.UserReq;
 import com.moemao.tgks.common.ums.user.service.UserService;
@@ -70,6 +71,8 @@ public class UserAction extends TGKSAction
 		int result = 0;
 		if (CommonUtil.isEmpty(userEvt.getId()))
 		{
+			// 新增账号默认初始未启用
+			userEvt.setStatus(UmsConstant.USER_STATUS_0);
 			result = ums_userService.addUser(userEvt);
 			CommonUtil.systemLog("ums/editUser.action", CommonConstant.SYSTEMLOG_TYPE_1, result == 0 ? CommonConstant.FAILD : CommonConstant.SUCCESS, String.format("新增账户\n%S", userEvt.toString()));
 		}

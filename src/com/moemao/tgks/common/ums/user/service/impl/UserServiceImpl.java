@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService
 	public int addUser(UserEvt userEvt)
 	{
 		userEvt.setId(UmsUtil.createUniqueID());
-		userEvt.setStatus(UmsConstant.USER_STATUS_0);
+		
 		return ums_userDao.ums_addUser(userEvt);
 	}
 	

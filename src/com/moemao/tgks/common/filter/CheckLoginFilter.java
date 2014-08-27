@@ -44,17 +44,23 @@ public class CheckLoginFilter implements Filter
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		
 		HttpSession session = request.getSession();
-		if (sessionKey == null)
+		
+		if(!(request.getRequestURI().contains("login.jsp") || request.getRequestURI().contains("login.action")
+				|| request.getRequestURI().contains("register.jsp") || request.getRequestURI().contains("register.action")))
 		{
-			filterChain.doFilter(request, response);
-			return;
+			if (sessionKey == null)
+			{
+				filterChain.doFilter(request, response);
+				return;
+			}
+			if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null)
+			{
+				session.setAttribute(CommonConstant.LOGIN_PLEASE, "请先登录");
+				response.sendRedirect(request.getContextPath() + redirectURL);
+				return;
+			}
 		}
-		if ((!checkRequestURIIntNotFilterList(request)) && session.getAttribute(sessionKey) == null)
-		{
-			session.setAttribute(CommonConstant.LOGIN_PLEASE, "请先登录");
-			response.sendRedirect(request.getContextPath() + redirectURL);
-			return;
-		}
+		
 		filterChain.doFilter(servletRequest, servletResponse);
 	}
 	

@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="public"><a href="http://www.0dunet.com" target="_blank">使用帮助</a><a href="http://www.0dunet.com" target="_blank">联系我们</a></div>
     </div>
     <div class="box png">
-        <form action="common/login.action" method="post">
+        <form action="<%=basePath%>common/login.action" method="post">
         <div class="header">
             <h2 class="logo png"><a href="http://www.0dunet.com" target="_blank"></a></h2>
             <span class="alt">管理员登录</span>
